@@ -14,11 +14,7 @@ public class Solution {
         Student.getAvgRating();
 
 
-
-
     }
-
-
 
 
 }

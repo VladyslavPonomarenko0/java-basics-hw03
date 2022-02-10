@@ -99,10 +99,11 @@ public class Student {
      * @param student is a student to delete
      */
     public static void removeStudent(Student student) {
+        storeSumm -= student.rating;
+        count--;
         student.name = null;
         student.rating = 0;
-        storeSumm = 0;
-        count = 0;
+
     }
 
     /**
