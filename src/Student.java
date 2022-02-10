@@ -1,50 +1,118 @@
+
 public class Student {
-  int rating;
-  private String name;
+    private int rating;
+    private String name;
+    public static int count; // variable to track the number of students, will be initialized with object creation
+    public static double storeSumm = 0.0d; // variable to store the total rating of all students
 
-  // TODO implement Student class according to the instructions provided in the README.md file
+    /**
+     * default constructor with parameters
+     */
+    private Student() {
+    }
 
-  public Student(String name) {
-    //TODO initialize name
-  }
+    /**
+     * Constructor with parameters
+     *
+     * @param name is a name to set
+     */
+    public Student(String name) {
+        this.name = name;
+        count++;
+    }
 
-  public static double getAvgRating() {
-    // TODO return average rating of all students
-    return 0;
-  }
+    /**
+     * Total rating "storeSumm" for all students is divided by the number "count" of student
+     *
+     * @return average rating if storeSumm != 0 , or in the other case - 0.0 instead of NaN
+     */
+    public static double getAvgRating() {
+        if (storeSumm == 0.0d) {
+            return 0.0d;
+        } else {
+            //System.out.println("total rating = " + storeSumm);
+            System.out.println("average rating = " + storeSumm / count);
+            return storeSumm / count;
+        }
+    }
 
-  public String getName() {
-    return name;
-  }
+    /**
+     * Method changes rating of particular student
+     *
+     * @param rating is a rating to change on.
+     */
+    public void changeRating(int rating) {
+        storeSumm = storeSumm - this.rating;
+        setRating(rating);
+    }
 
-  public void setName(String name) {
-    // TODO set student's name
-  }
+    /**
+     * Student's Name getter
+     *
+     * @return student name
+     */
+    public String getName() {
+        return name;
+    }
 
-  public int getRating() {
-    return rating;
-  }
+    /**
+     * Student's Name setter
+     *
+     * @param name is a name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public void setRating(int rating) {
-    // TODO initialize rating;
-  }
+    /**
+     * Student's rating getter
+     *
+     * @return the rating value
+     */
+    public int getRating() {
+        return rating;
+    }
 
-  public boolean betterStudent(Student student) {
-    // TODO return the result of comparing this.student's rating with the student's rating
-    return false;
-  }
+    /**
+     * Student's rating setter. Here we also record rating value to the variable  storeSum
+     *
+     * @param rating is a rating to set
+     */
+    public void setRating(int rating) {
+        this.rating = rating;
+        storeSumm += rating;
+    }
 
-  public void changeRating(int rating) {
-    // TODO change this student's rating and average rating of all students
-  }
+    /**
+     * Method to compare 2 students
+     *
+     * @param student is a Student to compare with
+     * @return true if the raiting of this.student is bigger than student rating
+     */
+    public boolean betterStudent(Student student) {
+        return this.rating > student.rating;
+    }
 
-  public static void removeStudent(Student student) {
-    // TODO remove student
-  }
+    /**
+     * Method to remove student
+     *
+     * @param student is a student to delete
+     */
+    public static void removeStudent(Student student) {
+        student.name = null;
+        student.rating = 0;
+        storeSumm = 0;
+        count = 0;
+    }
 
-  @Override
-  public String toString() {
-    // TODO return String with name and rating of this student
-    return "";
-  }
+    /**
+     * Method to output Student's info. Overriding standard toString method
+     *
+     * @return string with Student's name and rating
+     */
+    @Override
+    public String toString() {
+        System.out.println("Student info: Name - " + this.name + " /Rating - " + rating);
+        return this.name + rating;
+    }
 }

@@ -9,6 +9,8 @@ import static org.testng.Assert.*;
 public class StudentTest {
   List<Student> students = new ArrayList<>();
 
+
+
   @Test
   public void testGetAvgRating() {
 
@@ -97,6 +99,7 @@ public class StudentTest {
 
     assertTrue(student3.betterStudent(student4),
         student1 + " is not better than " + student2);
+
   }
 
   @Test
@@ -119,6 +122,9 @@ public class StudentTest {
     student2.changeRating(51);
 
     assertEquals(Student.getAvgRating(), 33.0d, "Average rating is wrong");
+    //student1.cleanVar();
+    //student2.cleanVar();
+
   }
 
   @Test
