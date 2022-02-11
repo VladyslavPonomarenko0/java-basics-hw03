@@ -6,7 +6,7 @@ public class Student {
     public static double storeSumm = 0.0d; // variable to store the total rating of all students
 
     /**
-     * default constructor with parameters
+     * default constructor without parameters
      */
     private Student() {
     }
